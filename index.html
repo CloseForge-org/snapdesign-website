@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNAP 設計 — 老宅翻新，快速設計，預算友善</title>
+<meta name="description" content="SNAP 設計：48小時內看到您的設計方案。專業室內設計，從NT$30萬起。政府補助諮詢免費。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d; line-height: 1.7; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 12px 0; box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
+  nav .inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+  nav .logo-text { font-size: 22px; font-weight: 900; background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  nav a { color: #555; text-decoration: none; font-size: 14px; font-weight: 500; margin-left: 24px; transition: color 0.2s; }
+  nav a:hover { color: #e8734a; }
+  .nav-cta { background: linear-gradient(135deg, #e8734a, #f0a848); color: white !important; -webkit-text-fill-color: white !important; padding: 8px 20px; border-radius: 25px; font-weight: 700; }
+
+  /* HERO */
+  .hero { padding: 140px 24px 80px; text-align: center; background: linear-gradient(165deg, #fff8f4 0%, #fff 50%, #fef5ee 100%); }
+  .hero img.logo { width: 180px; margin-bottom: 24px; }
+  .hero h1 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 16px; }
+  .hero h1 span { background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p.sub { font-size: 18px; color: #666; max-width: 600px; margin: 0 auto 32px; }
+  .hero-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+  .badge { background: white; border: 1px solid #f0d4c0; border-radius: 30px; padding: 10px 22px; font-size: 15px; font-weight: 600; color: #d45a2a; box-shadow: 0 2px 8px rgba(232,115,74,0.08); }
+  .badge em { font-style: normal; }
+  .hero-cta { display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848); color: white; padding: 16px 40px; border-radius: 30px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 20px rgba(232,115,74,0.3); transition: transform 0.2s, box-shadow 0.2s; }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(232,115,74,0.4); }
+
+  /* SECTION */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-title { text-align: center; font-size: 32px; font-weight: 900; margin-bottom: 12px; }
+  .section-title span { background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .section-sub { text-align: center; color: #888; font-size: 16px; margin-bottom: 48px; }
+
+  /* EDGES */
+  .edges { background: #fff; }
+  .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .edge-card { background: #fef9f5; border-radius: 16px; padding: 32px 28px; border: 1px solid #f5e0d0; transition: transform 0.2s, box-shadow 0.2s; }
+  .edge-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(232,115,74,0.1); }
+  .edge-icon { font-size: 36px; margin-bottom: 16px; }
+  .edge-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #d45a2a; }
+  .edge-card p { font-size: 14px; color: #666; line-height: 1.8; }
+
+  /* PORTFOLIO */
+  .portfolio { background: #faf7f4; }
+  .case-section { margin-bottom: 40px; }
+  .case-section h3 { font-size: 18px; font-weight: 700; color: #d45a2a; margin-bottom: 16px; text-align: center; }
+  .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .case-grid img { width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.3s; }
+  .case-grid img:hover { transform: scale(1.02); }
+
+  /* SUBSIDY */
+  .subsidy { background: #fff; }
+  .subsidy-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .subsidy-left h3 { font-size: 22px; font-weight: 700; margin-bottom: 16px; color: #d45a2a; }
+  .subsidy-left p { color: #666; margin-bottom: 16px; font-size: 15px; }
+  .subsidy-amounts { list-style: none; }
+  .subsidy-amounts li { padding: 12px 0; border-bottom: 1px solid #f0e8e0; display: flex; justify-content: space-between; }
+  .subsidy-amounts li .label { font-weight: 500; }
+  .subsidy-amounts li .amount { font-weight: 700; color: #d45a2a; }
+  .subsidy-right { background: linear-gradient(135deg, #fef5ee, #fff8f2); border: 1px solid #f0d4c0; border-radius: 16px; padding: 28px; }
+  .subsidy-right h4 { font-size: 17px; font-weight: 700; color: #d45a2a; margin-bottom: 14px; }
+  .subsidy-right ol { padding-left: 20px; color: #555; }
+  .subsidy-right ol li { margin-bottom: 10px; font-size: 14px; }
+  .subsidy-cta { margin-top: 20px; text-align: center; }
+  .subsidy-cta a { display: inline-block; background: #e8734a; color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+  /* PROCESS */
+  .process { background: #faf7f4; }
+  .process-steps { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+  .process-step { text-align: center; flex: 1; min-width: 160px; max-width: 200px; padding: 0 12px; position: relative; }
+  .process-step::after { content: '→'; position: absolute; right: -8px; top: 28px; font-size: 24px; color: #f0a848; font-weight: 700; }
+  .process-step:last-child::after { display: none; }
+  .step-num { display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848); color: white; width: 48px; height: 48px; line-height: 48px; border-radius: 50%; font-size: 20px; font-weight: 900; margin-bottom: 12px; }
+  .process-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .process-step p { font-size: 13px; color: #888; }
+
+  /* CTA */
+  .cta-section { background: linear-gradient(135deg, #e8734a, #f0a848); color: white; text-align: center; padding: 80px 24px; }
+  .cta-section h2 { font-size: 32px; font-weight: 900; margin-bottom: 16px; }
+  .cta-section p { font-size: 18px; opacity: 0.9; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn { display: inline-block; padding: 14px 36px; border-radius: 30px; font-size: 16px; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn-white { background: white; color: #e8734a; }
+  .cta-btn-outline { background: transparent; color: white; border: 2px solid white; }
+
+  /* FOOTER */
+  footer { background: #2d2d2d; color: #aaa; text-align: center; padding: 32px 24px; font-size: 13px; }
+  footer a { color: #f0a848; text-decoration: none; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 28px; }
+    .hero p.sub { font-size: 15px; }
+    .edge-grid { grid-template-columns: 1fr; }
+    .subsidy-content { grid-template-columns: 1fr; }
+    .process-steps { flex-direction: column; align-items: center; }
+    .process-step::after { display: none; }
+    .process-step { max-width: 100%; margin-bottom: 20px; }
+    nav .links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo-text">SNAP 設計</div>
+    <div class="links">
+      <a href="#portfolio">作品集</a>
+      <a href="#edges">為什麼選我們</a>
+      <a href="#subsidy">政府補助</a>
+      <a href="#contact" class="nav-cta">免費諮詢</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="img/logo.png" alt="SNAP 設計" class="logo">
+  <h1>老宅翻新<br><span>48 小時看到設計方案</span></h1>
+  <p class="sub">不用等幾週。拍張照片，我們在兩天內讓您看到全新的家。專業設計，預算友善，政府補助我們幫您申請。</p>
+  <div class="hero-badges">
+    <div class="badge">⚡ 48 小時出圖</div>
+    <div class="badge">💰 從 NT$30 萬起</div>
+    <div class="badge">🏛️ 政府補助代辦</div>
+  </div>
+  <a href="#contact" class="hero-cta">免費諮詢 →</a>
+</div>
+
+<!-- EDGES -->
+<section class="edges" id="edges">
+  <div class="section-inner">
+    <div class="section-title">為什麼選 <span>SNAP 設計</span>？</div>
+    <div class="section-sub">我們不一樣的三件事</div>
+    <div class="edge-grid">
+      <div class="edge-card">
+        <div class="edge-icon">⚡</div>
+        <h3>無可比擬的速度</h3>
+        <p>傳統設計公司需要 2-4 週才能出初稿。我們在 <strong>48 小時內</strong>讓您看到完整的設計方案 — 在決定之前，先看到效果。</p>
+      </div>
+      <div class="edge-card">
+        <div class="edge-icon">💰</div>
+        <h3>預算友善，效果驚人</h3>
+        <p>從 <strong>NT$30 萬起</strong>，我們讓您的預算發揮最大效果。不追求奢華，追求用最聰明的方式讓您的家煥然一新。</p>
+      </div>
+      <div class="edge-card">
+        <div class="edge-icon">🏛️</div>
+        <h3>政府補助一條龍</h3>
+        <p>老宅延壽計畫每戶最高補助 <strong>NT$30 萬</strong>。大多數屋主不知道這些補助存在 — 我們幫您評估資格、代辦申請、最大化補助金額。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="section-inner">
+    <div class="section-title">真實 <span>改造案例</span></div>
+    <div class="section-sub">每一張都是我們的實際作品</div>
+    
+    <div class="case-section">
+      <h3>🏠 案例一 — 空屋 → 溫馨現代宅</h3>
+      <div class="case-grid">
+        <img src="img/case1-living.jpg" alt="客廳改造" loading="lazy">
+        <img src="img/case1-bedroom.jpg" alt="臥室改造" loading="lazy">
+        <img src="img/case1-kitchen.jpg" alt="廚房改造" loading="lazy">
+        <img src="img/case1-dining.jpg" alt="餐廳改造" loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h3>🏠 案例二 — 老公寓 → 極簡現代風</h3>
+      <div class="case-grid">
+        <img src="img/case2-living.jpg" alt="客廳改造" loading="lazy">
+        <img src="img/case2-dining.jpg" alt="餐廳改造" loading="lazy">
+        <img src="img/case2-bedroom.jpg" alt="臥室改造" loading="lazy">
+        <img src="img/case2-detail.jpg" alt="細節改造" loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-section">
+      <h3>🏠 案例三 — 辦公雜物間 → 時尚休憩空間</h3>
+      <div class="case-grid">
+        <img src="img/case3-lounge.jpg" alt="休憩空間改造" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDY -->
+<section class="subsidy" id="subsidy">
+  <div class="section-inner">
+    <div class="section-title">政府幫您出錢 — <span>老宅延壽補助</span></div>
+    <div class="section-sub">屋齡 30 年以上即可申請，截止 2027/12/31</div>
+    
+    <div class="subsidy-content">
+      <div class="subsidy-left">
+        <h3>💰 補助金額一覽</h3>
+        <p>政府最高負擔工程費用的 <strong>65%</strong>，以下為各項上限：</p>
+        <ul class="subsidy-amounts">
+          <li><span class="label">🏢 公寓公共空間（整棟）</span><span class="amount">最高 NT$960 萬</span></li>
+          <li><span class="label">🏠 透天室外修繕（整棟）</span><span class="amount">最高 ~NT$330 萬</span></li>
+          <li><span class="label">🛋️ 室內空間 — 一般戶</span><span class="amount">每戶 NT$20 萬</span></li>
+          <li><span class="label">🛋️ 室內空間 — 高齡弱勢戶</span><span class="amount">每戶 NT$30 萬</span></li>
+        </ul>
+        <p style="font-size:13px; color:#999; margin-top:12px;">高齡弱勢戶：65歲以上長者、低收入/中低收入戶、長照2級以上</p>
+        <div class="subsidy-cta">
+          <a href="subsidy-guide.pdf" target="_blank">📄 下載完整補助指南 PDF</a>
+        </div>
+      </div>
+      <div class="subsidy-right">
+        <h4>📋 申請資格</h4>
+        <p style="font-size:14px; color:#555; margin-bottom:12px;"><strong>公寓（4-6樓）：</strong></p>
+        <ol>
+          <li>屋齡 30 年以上合法建築</li>
+          <li>住宅使用比例達 50% 以上</li>
+          <li>戶籍內至少 1 名 65+ 長者、低收入戶、或長照 2 級以上</li>
+          <li>取得 50% 以上所有權人同意</li>
+        </ol>
+        <p style="font-size:14px; color:#555; margin: 12px 0;"><strong>透天（≤6樓）：</strong></p>
+        <ol>
+          <li>屋齡 30 年以上，全棟住宅使用</li>
+          <li>全體所有權人同意</li>
+        </ol>
+        <p style="font-size:13px; color:#999; margin-top:14px;">諮詢專線：02-7701-9919<br>官方網站：<a href="https://twur.nlma.gov.tw/" target="_blank" style="color:#e8734a;">twur.nlma.gov.tw</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-title">合作 <span>流程</span></div>
+    <div class="section-sub">從拍照到入住，全程陪伴</div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>免費諮詢</h4>
+        <p>聊聊您的需求和預算</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>拍照丈量</h4>
+        <p>我們到府拍照記錄現況</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>48hr 出圖</h4>
+        <p>兩天內看到設計方案</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>補助申請</h4>
+        <p>符合資格即代辦申請</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h4>施工完工</h4>
+        <p>專業團隊一條龍服務</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>準備好翻新您的家了嗎？</h2>
+  <p>免費諮詢，48小時內看到您的設計方案。不滿意不收費。</p>
+  <div class="cta-buttons">
+    <a href="mailto:roger@culturecraft.ai" class="cta-btn cta-btn-white">📩 roger@culturecraft.ai</a>
+    <a href="subsidy-guide.pdf" class="cta-btn cta-btn-outline" target="_blank">📄 下載補助指南</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 SNAP 設計 ｜ snapdesign.tw</p>
+  <p style="margin-top:6px;">補助資料來源：<a href="https://twur.nlma.gov.tw/" target="_blank">內政部國土管理署</a>，實際條件以政府公告為準。</p>
+</footer>
+
+</body>
+</html>
