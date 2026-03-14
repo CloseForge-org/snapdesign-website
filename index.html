@@ -52,9 +52,15 @@
   .portfolio { background: #faf7f4; }
   .case-section { margin-bottom: 40px; }
   .case-section h3 { font-size: 18px; font-weight: 700; color: #d45a2a; margin-bottom: 16px; text-align: center; }
-  .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-  .case-grid img { width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.3s; }
+  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+  .case-grid img { width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); transition: transform 0.3s; cursor: pointer; }
   .case-grid img:hover { transform: scale(1.02); }
+  
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 92%; max-height: 90vh; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+  .lightbox-close { position: fixed; top: 20px; right: 28px; color: white; font-size: 36px; font-weight: 700; cursor: pointer; z-index: 1001; line-height: 1; }
 
   /* SUBSIDY */
   .subsidy { background: #fff; }
@@ -288,6 +294,35 @@
   <p>© 2026 SNAP 設計 ｜ snapdesign.tw</p>
   <p style="margin-top:6px;">補助資料來源：<a href="https://twur.nlma.gov.tw/" target="_blank">內政部國土管理署</a>，實際條件以政府公告為準。</p>
 </footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.querySelectorAll('.case-grid img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
