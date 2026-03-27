@@ -160,6 +160,87 @@
   @media (min-width: 769px) {
     .hero-panel { transform: translateY(10px); }
   }
+
+  /* ROI CALCULATOR */
+  .roi-calc { background: #faf7f4; }
+  .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .calc-inputs { background: white; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7; box-shadow: 0 8px 28px rgba(232,115,74,0.08); }
+  .calc-field { margin-bottom: 20px; }
+  .calc-field label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 8px; }
+  .calc-field input, .calc-field select {
+    width: 100%; padding: 13px 16px; border: 1.5px solid #e8d5c8; border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d;
+    background: #fdf9f6; transition: border-color 0.2s;
+  }
+  .calc-field input:focus, .calc-field select:focus { outline: none; border-color: #e8734a; }
+  .calc-btn {
+    width: 100%; padding: 14px; background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700;
+    cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(232,115,74,0.25);
+  }
+  .calc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(232,115,74,0.35); }
+  .calc-results {
+    background: white; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7;
+    box-shadow: 0 8px 28px rgba(232,115,74,0.08); opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .calc-results.visible { opacity: 1; transform: translateY(0); }
+  .results-inner { margin-bottom: 20px; }
+  .result-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5ede6; }
+  .result-item:last-child { border-bottom: none; }
+  .result-label { font-size: 14px; color: #666; font-weight: 500; }
+  .result-value { font-size: 22px; font-weight: 900; color: #e8734a; }
+  .subsidy-alert {
+    display: flex; gap: 14px; align-items: flex-start; background: linear-gradient(135deg, #fff8f0, #fff3e6);
+    border: 1.5px solid #f0a848; border-radius: 14px; padding: 16px 18px; margin-top: 16px;
+    animation: pulseGlow 2s ease infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(240,168,72,0); }
+    50% { box-shadow: 0 0 0 6px rgba(240,168,72,0.15); }
+  }
+  .alert-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+  .subsidy-alert strong { display: block; font-size: 14px; color: #b85e10; margin-bottom: 4px; }
+  .subsidy-alert #subsidy-payback-text { font-size: 13px; color: #888; }
+  .calc-disclaimer { font-size: 12px; color: #bbb; }
+
+  /* SUBSIDY CHECKER */
+  .subsidy-checker { background: #fff; }
+  .checker-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .checker-questions { background: #faf7f4; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7; }
+  .checker-field { margin-bottom: 20px; }
+  .checker-field label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 8px; }
+  .checker-field select {
+    width: 100%; padding: 13px 16px; border: 1.5px solid #e8d5c8; border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d; background: white;
+    transition: border-color 0.2s;
+  }
+  .checker-field select:focus { outline: none; border-color: #e8734a; }
+  .checker-result {
+    border-radius: 20px; padding: 32px; min-height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    background: #faf7f4; border: 1px dashed #e8d5c8;
+    opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .checker-result.visible { opacity: 1; transform: translateY(0); }
+  .checker-result-content { text-align: center; }
+  .checker-emoji { font-size: 52px; margin-bottom: 16px; }
+  .checker-result-content h3 { font-size: 18px; font-weight: 800; color: #2d2d2d; margin-bottom: 10px; line-height: 1.5; }
+  .checker-result-content p { font-size: 14px; color: #777; margin-bottom: 20px; line-height: 1.8; }
+  .checker-cta-btn {
+    display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none;
+    font-weight: 700; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(232,115,74,0.25);
+  }
+  .checker-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,115,74,0.35); }
+  .checker-empty { color: #bbb; font-size: 15px; }
+
+  @media (max-width: 768px) {
+    .calc-wrapper { grid-template-columns: 1fr; }
+    .checker-wrapper { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -351,6 +432,125 @@
   </div>
 </section>
 
+<!-- ROI CALCULATOR -->
+<section class="roi-calc" id="roi-calculator">
+  <div class="section-inner">
+    <div class="section-title">投資報酬率 <span>計算器</span></div>
+    <div class="section-sub">輸入您的房屋資訊，立即估算翻新後的投報率與回本時間</div>
+    <div class="calc-wrapper">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="current-rent">目前月租 (NT$)</label>
+          <input type="number" id="current-rent" placeholder="例：18000" min="0">
+        </div>
+        <div class="calc-field">
+          <label for="vacancy-rate">目前空置率</label>
+          <select id="vacancy-rate">
+            <option value="" disabled selected>選擇空置率</option>
+            <option value="0">0%</option>
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="50">50%</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="reno-budget">翻新預算</label>
+          <select id="reno-budget">
+            <option value="" disabled selected>選擇預算</option>
+            <option value="300000">30 萬</option>
+            <option value="500000">50 萬</option>
+            <option value="800000">80 萬</option>
+            <option value="1200000">120 萬</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="building-age-calc">屋齡（年）</label>
+          <input type="number" id="building-age-calc" placeholder="例：35" min="0" max="100">
+        </div>
+        <button class="calc-btn" onclick="calculateROI()">計算投報率 →</button>
+      </div>
+      <div class="calc-results" id="calc-results">
+        <div class="results-inner">
+          <div class="result-item">
+            <span class="result-label">翻新後預估月租</span>
+            <span class="result-value" id="res-new-rent">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">年租金增加金額</span>
+            <span class="result-value" id="res-annual-increase">—</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">回本月數</span>
+            <span class="result-value" id="res-payback">—</span>
+          </div>
+          <div class="subsidy-alert" id="subsidy-alert" style="display:none;">
+            <span class="alert-icon">🏛️</span>
+            <div>
+              <strong>您可能符合政府補助，最高可補助 65%！</strong>
+              <div id="subsidy-payback-text"></div>
+            </div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">※ 以上為估算數字，實際結果依房屋條件與市場而異。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDY CHECKER -->
+<section class="subsidy-checker" id="subsidy-checker">
+  <div class="section-inner">
+    <div class="section-title">補助資格 <span>快速檢查</span></div>
+    <div class="section-sub">回答四個問題，立即了解您是否符合政府補助資格</div>
+    <div class="checker-wrapper">
+      <div class="checker-questions">
+        <div class="checker-field">
+          <label>Q1　您的房屋屋齡？</label>
+          <select id="q-age">
+            <option value="" disabled selected>請選擇</option>
+            <option value="under20">20 年以下</option>
+            <option value="20to30">20-30 年</option>
+            <option value="over30">30 年以上</option>
+            <option value="unsure">不確定</option>
+          </select>
+        </div>
+        <div class="checker-field">
+          <label>Q2　房屋類型？</label>
+          <select id="q-type">
+            <option value="" disabled selected>請選擇</option>
+            <option value="apartment">公寓 4-6 樓</option>
+            <option value="townhouse">透天</option>
+            <option value="building">大樓</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+        <div class="checker-field">
+          <label>Q3　戶籍內是否有 65 歲以上長者？</label>
+          <select id="q-elderly">
+            <option value="" disabled selected>請選擇</option>
+            <option value="yes">是</option>
+            <option value="no">否</option>
+            <option value="unsure">不確定</option>
+          </select>
+        </div>
+        <div class="checker-field">
+          <label>Q4　是否為低收入戶或中低收入戶？</label>
+          <select id="q-income">
+            <option value="" disabled selected>請選擇</option>
+            <option value="yes">是</option>
+            <option value="no">否</option>
+          </select>
+        </div>
+        <button class="calc-btn" onclick="checkSubsidy()">檢查資格 →</button>
+      </div>
+      <div class="checker-result" id="checker-result">
+        <div id="checker-result-inner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
@@ -402,6 +602,110 @@
 </div>
 
 <script>
+  // ROI Calculator
+  function calculateROI() {
+    const rent = parseFloat(document.getElementById('current-rent').value);
+    const vacancyEl = document.getElementById('vacancy-rate');
+    const budgetEl = document.getElementById('reno-budget');
+    const ageEl = document.getElementById('building-age-calc');
+
+    if (!rent || vacancyEl.value === '' || budgetEl.value === '' || !ageEl.value) {
+      alert('請填寫所有欄位');
+      return;
+    }
+
+    const vacancy = parseFloat(vacancyEl.value) / 100;
+    const budget = parseFloat(budgetEl.value);
+    const age = parseInt(ageEl.value);
+
+    // Rent increase % by budget tier
+    let increaseRate;
+    if (budget <= 300000) increaseRate = 0.20;
+    else if (budget <= 500000) increaseRate = 0.23;
+    else if (budget <= 800000) increaseRate = 0.27;
+    else increaseRate = 0.30;
+
+    const newRent = Math.round(rent * (1 + increaseRate));
+    const monthlyIncrease = newRent - rent;
+    const annualIncrease = monthlyIncrease * 12;
+    const paybackMonths = Math.ceil(budget / monthlyIncrease);
+
+    document.getElementById('res-new-rent').textContent = 'NT$' + newRent.toLocaleString();
+    document.getElementById('res-annual-increase').textContent = 'NT$' + annualIncrease.toLocaleString();
+    document.getElementById('res-payback').textContent = paybackMonths + ' 個月';
+
+    // Subsidy alert for 30+ year buildings
+    const subsidyAlert = document.getElementById('subsidy-alert');
+    if (age >= 30) {
+      const subsidizedCost = budget * 0.35; // gov pays 65%, owner pays 35%
+      const subsidizedPayback = Math.ceil(subsidizedCost / monthlyIncrease);
+      document.getElementById('subsidy-payback-text').textContent =
+        '補助後實際負擔約 NT$' + Math.round(subsidizedCost).toLocaleString() +
+        '，回本縮短至 ' + subsidizedPayback + ' 個月';
+      subsidyAlert.style.display = 'flex';
+    } else {
+      subsidyAlert.style.display = 'none';
+    }
+
+    const resultsEl = document.getElementById('calc-results');
+    resultsEl.classList.add('visible');
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Subsidy Eligibility Checker
+  function checkSubsidy() {
+    const age = document.getElementById('q-age').value;
+    const type = document.getElementById('q-type').value;
+    const elderly = document.getElementById('q-elderly').value;
+    const income = document.getElementById('q-income').value;
+
+    if (!age || !type || !elderly || !income) {
+      alert('請回答所有問題');
+      return;
+    }
+
+    let emoji, title, desc;
+
+    const isOver30 = age === 'over30';
+    const isEligibleType = type === 'apartment' || type === 'townhouse';
+    const hasEligiblePerson = elderly === 'yes' || income === 'yes';
+
+    if (isOver30 && isEligibleType && hasEligiblePerson) {
+      emoji = '✅';
+      title = '您很可能符合老宅延壽補助！';
+      desc = '每戶最高 NT$30 萬，政府負擔 65%。我們可以協助您準備申請文件，讓翻新成本大幅降低。';
+    } else if (isOver30 && (!isEligibleType || !hasEligiblePerson)) {
+      emoji = '🔍';
+      title = '您的房屋屋齡符合，但需要進一步確認其他條件。';
+      desc = '建議預約免費諮詢，我們會協助您確認是否符合其他補助管道，並為您規劃最有效的翻新方案。';
+    } else if (age === '20to30') {
+      emoji = '📋';
+      title = '您可能符合修繕住宅貸款利息補貼';
+      desc = '每年 8 月申請，最高 NT$80 萬貸款，利息由政府補貼。翻新後提升租金收益，還款輕鬆。';
+    } else {
+      emoji = 'ℹ️';
+      title = '目前政府補助主要針對屋齡 30 年以上房屋。';
+      desc = '我們仍可為您規劃最有投報率的翻新方案，用最少預算換來更高租金與更低空置率。';
+    }
+
+    const inner = document.getElementById('checker-result-inner');
+    inner.innerHTML = `
+      <div class="checker-result-content">
+        <div class="checker-emoji">${emoji}</div>
+        <h3>${title}</h3>
+        <p>${desc}</p>
+        <a href="#contact" class="checker-cta-btn">預約免費諮詢 →</a>
+      </div>
+    `;
+
+    const resultEl = document.getElementById('checker-result');
+    resultEl.style.border = '1px solid #f1e3d7';
+    resultEl.style.background = 'white';
+    resultEl.classList.add('visible');
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
 
