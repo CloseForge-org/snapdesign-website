@@ -3,197 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SNAP 設計 — 老宅翻新，最少預算，最高投報率</title>
-<meta name="description" content="SNAP 設計：專為房東與自住客打造高投報率翻新方案。從NT$30萬起，最快10個工作天完工，免費諮詢，政府補助與貸款評估。">
+<title>SNAP 設計 — 老宅翻新，最少預算，最高租金回報</title>
+<meta name="description" content="SNAP 設計：專為房東打造高投報率翻新方案。你保留100%控制權，我們只負責讓房子變更值錢。從NT$30萬起，最快10個工作天完工。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d; line-height: 1.7; }
+  body { font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d; line-height: 1.7; background: #faf7f4; }
+
+  .grad-text {
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   /* NAV */
-  nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 12px 0; box-shadow: 0 1px 10px rgba(0,0,0,0.06); }
-  nav .inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
-  nav .logo-text { font-size: 22px; font-weight: 900; background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  nav a { color: #555; text-decoration: none; font-size: 14px; font-weight: 500; margin-left: 24px; transition: color 0.2s; }
-  nav a:hover { color: #e8734a; }
-  .nav-cta { background: linear-gradient(135deg, #e8734a, #f0a848); color: white !important; -webkit-text-fill-color: white !important; padding: 8px 20px; border-radius: 25px; font-weight: 700; }
+  nav {
+    position: fixed; top: 0; width: 100%;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    z-index: 100; padding: 12px 0;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.07);
+  }
+  nav .inner {
+    max-width: 1240px; margin: 0 auto;
+    padding: 0 28px; display: flex;
+    align-items: center; justify-content: space-between;
+  }
+  nav .logo-text {
+    font-size: 22px; font-weight: 900;
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  nav .links { display: flex; align-items: center; gap: 4px; }
+  nav .links a {
+    color: #555; text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    padding: 8px 14px; border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+  }
+  nav .links a:hover { color: #e8734a; background: #fef3ec; }
+  .nav-cta {
+    background: linear-gradient(135deg, #e8734a, #f0a848) !important;
+    color: white !important; -webkit-text-fill-color: white !important;
+    padding: 9px 22px !important; border-radius: 25px !important;
+    font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: linear-gradient(135deg, #d45a2a, #e8734a) !important; }
 
   /* HERO */
-  .hero { padding: 136px 24px 88px; background: linear-gradient(165deg, #fff8f4 0%, #fff 50%, #fef5ee 100%); }
-  .hero-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+  .hero {
+    padding: 136px 24px 88px;
+    background: linear-gradient(165deg, #fff8f4 0%, #fff 50%, #fef5ee 100%);
+  }
+  .hero-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: 56px; align-items: center;
+  }
   .hero-copy { text-align: left; }
-  .hero img.logo { width: 180px; margin-bottom: 24px; }
-  .hero h1 { font-size: 56px; font-weight: 900; line-height: 1.15; margin-bottom: 18px; letter-spacing: -0.02em; }
-  .hero h1 span { background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .hero p.sub { font-size: 19px; color: #666; max-width: 640px; margin-bottom: 28px; }
-  .hero-badges { display: flex; justify-content: flex-start; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
-  .badge { background: white; border: 1px solid #f0d4c0; border-radius: 30px; padding: 10px 18px; font-size: 15px; font-weight: 600; color: #d45a2a; box-shadow: 0 2px 8px rgba(232,115,74,0.08); }
-  .badge em { font-style: normal; }
-  .hero-cta { display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848); color: white; padding: 16px 40px; border-radius: 30px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 20px rgba(232,115,74,0.3); transition: transform 0.2s, box-shadow 0.2s; }
+  .hero img.logo { width: 180px; margin-bottom: 24px; display: block; }
+  .hero h1 {
+    font-size: 52px; font-weight: 900;
+    line-height: 1.2; margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero p.sub { font-size: 18px; color: #666; max-width: 600px; margin-bottom: 28px; }
+  .hero-badges {
+    display: flex; justify-content: flex-start;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 34px;
+  }
+  .badge {
+    background: white; border: 1px solid #f0d4c0;
+    border-radius: 30px; padding: 10px 18px;
+    font-size: 14px; font-weight: 600; color: #d45a2a;
+    box-shadow: 0 2px 8px rgba(232,115,74,0.08);
+  }
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; padding: 16px 40px; border-radius: 30px;
+    font-size: 18px; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(232,115,74,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
   .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(232,115,74,0.4); }
   .hero-side { display: flex; justify-content: center; }
-  .hero-panel { width: 100%; max-width: 470px; background: rgba(255,255,255,0.92); border: 1px solid #f0d9ca; border-radius: 24px; padding: 28px; box-shadow: 0 18px 50px rgba(232,115,74,0.12); }
-  .hero-panel h3 { font-size: 24px; margin-bottom: 10px; color: #d45a2a; }
-  .hero-panel p { color: #666; font-size: 15px; margin-bottom: 20px; }
+  .hero-panel {
+    width: 100%; max-width: 470px;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid #f0d9ca; border-radius: 24px;
+    padding: 28px; box-shadow: 0 18px 50px rgba(232,115,74,0.12);
+  }
+  .hero-panel h3 { font-size: 22px; margin-bottom: 10px; color: #d45a2a; font-weight: 800; }
+  .hero-panel > p { color: #666; font-size: 15px; margin-bottom: 20px; }
   .hero-points { display: grid; gap: 12px; margin-bottom: 20px; }
-  .hero-point { background: #fff7f2; border: 1px solid #f3dfd1; border-radius: 16px; padding: 14px 16px; }
-  .hero-point strong { display: block; font-size: 16px; color: #2d2d2d; margin-bottom: 2px; }
-  .hero-point span { color: #777; font-size: 14px; }
-  .hero-note { font-size: 13px; color: #9a7c6d; }
+  .hero-point {
+    background: #fff7f2; border: 1px solid #f3dfd1;
+    border-radius: 14px; padding: 14px 16px;
+  }
+  .hero-point strong { display: block; font-size: 15px; color: #2d2d2d; margin-bottom: 2px; }
+  .hero-point span { color: #777; font-size: 13px; }
+  .hero-note { font-size: 12px; color: #9a7c6d; line-height: 1.6; }
 
-  /* SECTION */
+  /* SECTION BASE */
   section { padding: 92px 24px; }
   .section-inner { max-width: 1240px; margin: 0 auto; }
-  .section-title { text-align: center; font-size: 40px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.02em; }
-  .section-title span { background: linear-gradient(135deg, #e8734a, #f0a848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .section-sub { text-align: center; color: #888; font-size: 18px; margin-bottom: 56px; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .section-title {
+    text-align: center; font-size: 38px; font-weight: 900;
+    margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .section-sub {
+    text-align: center; color: #888; font-size: 17px;
+    margin-bottom: 52px; max-width: 760px;
+    margin-left: auto; margin-right: auto;
+  }
 
-  /* EDGES */
-  .edges { background: #fff; }
-  .edge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .edge-card { background: #fef9f5; border-radius: 16px; padding: 32px 28px; border: 1px solid #f5e0d0; transition: transform 0.2s, box-shadow 0.2s; }
-  .edge-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(232,115,74,0.1); }
-  .edge-icon { font-size: 36px; margin-bottom: 16px; }
-  .edge-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #d45a2a; }
-  .edge-card p { font-size: 14px; color: #666; line-height: 1.8; }
+  /* COMPARISON */
+  .comparison { background: #fff; }
+  .comparison-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-bottom: 36px;
+  }
+  .comp-card {
+    border-radius: 20px; padding: 28px 24px;
+    list-style: none;
+  }
+  .comp-card-label {
+    font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+  .comp-card-muted {
+    background: #f5f5f5; border: 2px solid #e0e0e0;
+  }
+  .comp-card-muted .comp-card-label { color: #999; }
+  .comp-card-highlight {
+    background: linear-gradient(145deg, #fff8f4, #fff3ec);
+    border: 2px solid #e8734a;
+    box-shadow: 0 8px 32px rgba(232,115,74,0.12);
+  }
+  .comp-card-highlight .comp-card-label { color: #e8734a; }
+  .comp-item {
+    display: flex; align-items: flex-start;
+    gap: 10px; padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 15px;
+  }
+  .comp-item:last-child { border-bottom: none; }
+  .comp-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .comp-card-muted .comp-item { color: #777; }
+  .comp-card-highlight .comp-item { color: #2d2d2d; font-weight: 500; }
+  .comparison-quote {
+    background: linear-gradient(135deg, #fff8f4, #fff3e6);
+    border: 1px solid #f0d4c0; border-radius: 16px;
+    padding: 24px 28px; text-align: center;
+    font-size: 16px; color: #555; line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* THREE PILLARS */
+  .pillars { background: #faf7f4; }
+  .pillar-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .pillar-card {
+    background: white; border-radius: 20px;
+    padding: 32px 28px; border: 1px solid #f1e3d7;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(232,115,74,0.1); }
+  .pillar-icon { font-size: 36px; margin-bottom: 16px; }
+  .pillar-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: #d45a2a; }
+  .pillar-card p { font-size: 14px; color: #666; line-height: 1.85; }
 
   /* PORTFOLIO */
-  .portfolio { background: #faf7f4; }
-  .case-section { margin-bottom: 32px; background: rgba(255,255,255,0.82); border: 1px solid #f1e3d7; border-radius: 24px; padding: 28px; box-shadow: 0 10px 28px rgba(0,0,0,0.04); }
-  .case-section h3 { font-size: 22px; font-weight: 800; color: #d45a2a; margin-bottom: 18px; text-align: left; }
-  .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 100%; margin: 0 auto; }
-  .case-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+  .portfolio { background: #fff; }
+  .case-section {
+    margin-bottom: 28px; background: #faf7f4;
+    border: 1px solid #f1e3d7; border-radius: 24px;
+    padding: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+  }
+  .case-section h3 {
+    font-size: 20px; font-weight: 800;
+    color: #d45a2a; margin-bottom: 18px; text-align: left;
+  }
+  .case-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .case-grid img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
+  }
   .case-grid img:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.12); }
-  
+
   /* Lightbox */
-  .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox {
+    display: none; position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.88); z-index: 1000;
+    justify-content: center; align-items: center; cursor: pointer;
+  }
   .lightbox.active { display: flex; }
-  .lightbox img { max-width: 92%; max-height: 90vh; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
-  .lightbox-close { position: fixed; top: 20px; right: 28px; color: white; font-size: 36px; font-weight: 700; cursor: pointer; z-index: 1001; line-height: 1; }
-
-  /* SUBSIDY */
-  .subsidy { background: #fff; }
-  .subsidy-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-  .subsidy-left h3 { font-size: 22px; font-weight: 700; margin-bottom: 16px; color: #d45a2a; }
-  .subsidy-left p { color: #666; margin-bottom: 16px; font-size: 15px; }
-  .subsidy-amounts { list-style: none; }
-  .subsidy-amounts li { padding: 12px 0; border-bottom: 1px solid #f0e8e0; display: flex; justify-content: space-between; }
-  .subsidy-amounts li .label { font-weight: 500; }
-  .subsidy-amounts li .amount { font-weight: 700; color: #d45a2a; }
-  .subsidy-right { background: linear-gradient(135deg, #fef5ee, #fff8f2); border: 1px solid #f0d4c0; border-radius: 16px; padding: 28px; }
-  .subsidy-right h4 { font-size: 17px; font-weight: 700; color: #d45a2a; margin-bottom: 14px; }
-  .subsidy-right ol { padding-left: 20px; color: #555; }
-  .subsidy-right ol li { margin-bottom: 10px; font-size: 14px; }
-  .subsidy-cta { margin-top: 20px; text-align: center; }
-  .subsidy-cta a { display: inline-block; background: #e8734a; color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 700; font-size: 14px; }
-
-  /* PROCESS */
-  .process { background: #faf7f4; }
-  .process-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
-  .process-step { text-align: left; padding: 24px 22px; position: relative; background: white; border-radius: 18px; border: 1px solid #f1e3d7; box-shadow: 0 8px 24px rgba(0,0,0,0.04); min-height: 180px; }
-  .process-step::after { display: none; }
-  .step-num { display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848); color: white; width: 48px; height: 48px; line-height: 48px; border-radius: 50%; font-size: 20px; font-weight: 900; margin-bottom: 18px; text-align: center; }
-  .process-step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-  .process-step p { font-size: 14px; color: #888; }
-
-  /* CTA */
-  .cta-section { background: linear-gradient(135deg, #e8734a, #f0a848); color: white; padding: 88px 24px; }
-  .cta-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
-  .cta-copy { text-align: left; }
-  .cta-section h2 { font-size: 42px; font-weight: 900; margin-bottom: 16px; line-height: 1.15; }
-  .cta-section p { font-size: 18px; opacity: 0.92; margin-bottom: 28px; max-width: 560px; }
-  .cta-buttons { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
-  .cta-btn { display: inline-block; padding: 14px 36px; border-radius: 30px; font-size: 16px; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
-  .cta-btn:hover { transform: translateY(-2px); }
-  .cta-btn-white { background: white; color: #e8734a; }
-  .cta-btn-outline { background: transparent; color: white; border: 2px solid white; }
-
-  /* Contact Form */
-  .contact-card { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); border-radius: 24px; padding: 28px; backdrop-filter: blur(8px); }
-  .contact-form { max-width: 100%; margin: 0; text-align: left; }
-  .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
-  .form-row > * { flex: 1; }
-  .contact-form input, .contact-form select, .contact-form textarea {
-    width: 100%; padding: 14px 16px; border: none; border-radius: 12px; font-size: 15px;
-    font-family: 'Noto Sans TC', sans-serif; background: rgba(255,255,255,0.95); color: #2d2d2d;
+  .lightbox img {
+    max-width: 92%; max-height: 90vh;
+    border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
   }
-  .contact-form input::placeholder, .contact-form textarea::placeholder { color: #aaa; }
-  .contact-form select { color: #aaa; }
-  .contact-form select:valid { color: #2d2d2d; }
-  .contact-form textarea { resize: vertical; margin-bottom: 16px; }
-  .contact-meta { display: grid; gap: 10px; margin-top: 20px; font-size: 14px; opacity: 0.92; }
-  @media (max-width: 768px) { .form-row { flex-direction: column; } }
-
-  /* FOOTER */
-  footer { background: #2d2d2d; color: #aaa; text-align: center; padding: 32px 24px; font-size: 13px; }
-  footer a { color: #f0a848; text-decoration: none; }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    .hero { padding: 118px 20px 64px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 28px; }
-    .hero-copy { text-align: center; }
-    .hero img.logo { margin: 0 auto 20px; }
-    .hero h1 { font-size: 30px; }
-    .hero p.sub { font-size: 15px; margin-left: auto; margin-right: auto; }
-    .hero-badges { justify-content: center; }
-    .hero-panel { padding: 22px; }
-    .section-title { font-size: 30px; }
-    .section-sub { font-size: 15px; margin-bottom: 36px; }
-    .edge-grid { grid-template-columns: 1fr; }
-    .case-section { padding: 20px; }
-    .case-section h3 { font-size: 18px; text-align: center; }
-    .case-grid { grid-template-columns: 1fr; }
-    .case-grid img { aspect-ratio: auto; }
-    .subsidy-content { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr; }
-    .process-step { min-height: auto; }
-    .cta-inner { grid-template-columns: 1fr; gap: 28px; }
-    .cta-copy { text-align: center; }
-    .cta-section h2 { font-size: 30px; }
-    .cta-buttons { justify-content: center; }
-    nav .links { display: none; }
-  }
-
-  @media (min-width: 769px) {
-    .hero-panel { transform: translateY(10px); }
+  .lightbox-close {
+    position: fixed; top: 20px; right: 28px;
+    color: white; font-size: 36px; font-weight: 700;
+    cursor: pointer; z-index: 1001; line-height: 1;
   }
 
   /* ROI CALCULATOR */
   .roi-calc { background: #faf7f4; }
-  .calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-  .calc-inputs { background: white; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7; box-shadow: 0 8px 28px rgba(232,115,74,0.08); }
+  .calc-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+  .calc-inputs {
+    background: white; border-radius: 20px;
+    padding: 32px; border: 1px solid #f1e3d7;
+    box-shadow: 0 8px 28px rgba(232,115,74,0.08);
+  }
   .calc-field { margin-bottom: 20px; }
-  .calc-field label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 8px; }
+  .calc-field label {
+    display: block; font-size: 14px; font-weight: 600;
+    color: #555; margin-bottom: 8px;
+  }
   .calc-field input, .calc-field select {
-    width: 100%; padding: 13px 16px; border: 1.5px solid #e8d5c8; border-radius: 10px;
-    font-size: 15px; font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d;
-    background: #fdf9f6; transition: border-color 0.2s;
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #e8d5c8; border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans TC', sans-serif;
+    color: #2d2d2d; background: #fdf9f6; transition: border-color 0.2s;
   }
   .calc-field input:focus, .calc-field select:focus { outline: none; border-color: #e8734a; }
   .calc-btn {
-    width: 100%; padding: 14px; background: linear-gradient(135deg, #e8734a, #f0a848);
-    color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700;
-    cursor: pointer; font-family: 'Noto Sans TC', sans-serif;
-    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 16px rgba(232,115,74,0.25);
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; border: none; border-radius: 12px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(232,115,74,0.25);
+    min-height: 44px;
   }
   .calc-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(232,115,74,0.35); }
   .calc-results {
-    background: white; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7;
-    box-shadow: 0 8px 28px rgba(232,115,74,0.08); opacity: 0; transform: translateY(16px);
+    background: white; border-radius: 20px;
+    padding: 32px; border: 1px solid #f1e3d7;
+    box-shadow: 0 8px 28px rgba(232,115,74,0.08);
+    opacity: 0; transform: translateY(16px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .calc-results.visible { opacity: 1; transform: translateY(0); }
   .results-inner { margin-bottom: 20px; }
-  .result-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #f5ede6; }
+  .result-item {
+    display: flex; justify-content: space-between;
+    align-items: center; padding: 14px 0;
+    border-bottom: 1px solid #f5ede6;
+  }
   .result-item:last-child { border-bottom: none; }
   .result-label { font-size: 14px; color: #666; font-weight: 500; }
   .result-value { font-size: 22px; font-weight: 900; color: #e8734a; }
   .subsidy-alert {
-    display: flex; gap: 14px; align-items: flex-start; background: linear-gradient(135deg, #fff8f0, #fff3e6);
-    border: 1.5px solid #f0a848; border-radius: 14px; padding: 16px 18px; margin-top: 16px;
+    display: flex; gap: 14px; align-items: flex-start;
+    background: linear-gradient(135deg, #fff8f0, #fff3e6);
+    border: 1.5px solid #f0a848; border-radius: 14px;
+    padding: 16px 18px; margin-top: 16px;
     animation: pulseGlow 2s ease infinite;
   }
   @keyframes pulseGlow {
@@ -207,39 +291,234 @@
 
   /* SUBSIDY CHECKER */
   .subsidy-checker { background: #fff; }
-  .checker-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-  .checker-questions { background: #faf7f4; border-radius: 20px; padding: 32px; border: 1px solid #f1e3d7; }
+  .checker-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+  .checker-questions {
+    background: #faf7f4; border-radius: 20px;
+    padding: 32px; border: 1px solid #f1e3d7;
+  }
   .checker-field { margin-bottom: 20px; }
-  .checker-field label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 8px; }
+  .checker-field label {
+    display: block; font-size: 14px; font-weight: 600;
+    color: #555; margin-bottom: 8px;
+  }
   .checker-field select {
-    width: 100%; padding: 13px 16px; border: 1.5px solid #e8d5c8; border-radius: 10px;
-    font-size: 15px; font-family: 'Noto Sans TC', sans-serif; color: #2d2d2d; background: white;
-    transition: border-color 0.2s;
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #e8d5c8; border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans TC', sans-serif;
+    color: #2d2d2d; background: white; transition: border-color 0.2s;
   }
   .checker-field select:focus { outline: none; border-color: #e8734a; }
   .checker-result {
     border-radius: 20px; padding: 32px; min-height: 200px;
     display: flex; align-items: center; justify-content: center;
     background: #faf7f4; border: 1px dashed #e8d5c8;
-    opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .checker-result.visible { opacity: 1; transform: translateY(0); }
   .checker-result-content { text-align: center; }
   .checker-emoji { font-size: 52px; margin-bottom: 16px; }
-  .checker-result-content h3 { font-size: 18px; font-weight: 800; color: #2d2d2d; margin-bottom: 10px; line-height: 1.5; }
+  .checker-result-content h3 {
+    font-size: 18px; font-weight: 800;
+    color: #2d2d2d; margin-bottom: 10px; line-height: 1.5;
+  }
   .checker-result-content p { font-size: 14px; color: #777; margin-bottom: 20px; line-height: 1.8; }
   .checker-cta-btn {
-    display: inline-block; background: linear-gradient(135deg, #e8734a, #f0a848);
-    color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none;
-    font-weight: 700; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; padding: 12px 28px; border-radius: 25px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 14px rgba(232,115,74,0.25);
+    min-height: 44px; display: inline-flex; align-items: center;
   }
   .checker-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,115,74,0.35); }
-  .checker-empty { color: #bbb; font-size: 15px; }
 
+  /* PROCESS */
+  .process { background: #faf7f4; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px; margin-bottom: 16px;
+  }
+  .process-step {
+    text-align: left; padding: 24px 20px;
+    background: white; border-radius: 18px;
+    border: 1px solid #f1e3d7;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; width: 44px; height: 44px;
+    border-radius: 50%; font-size: 18px; font-weight: 900;
+    margin-bottom: 16px;
+  }
+  .process-step h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .process-step p { font-size: 13px; color: #888; line-height: 1.7; }
+  .process-note { font-size: 13px; color: #999; text-align: center; }
+
+  /* WHO IS IT FOR */
+  .for-who { background: #fff; }
+  .for-who-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .for-card {
+    border-radius: 20px; padding: 28px 24px;
+    border: 2px solid;
+  }
+  .for-card-yes {
+    background: linear-gradient(145deg, #f0fff4, #e8fff0);
+    border-color: #52c276;
+  }
+  .for-card-no {
+    background: #fafafa; border-color: #e8e8e8;
+  }
+  .for-card-title {
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+  }
+  .for-card-yes .for-card-title { color: #2a8a4a; }
+  .for-card-no .for-card-title { color: #666; }
+  .for-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-size: 14px; color: #444; line-height: 1.6;
+  }
+  .for-item:last-child { border-bottom: none; }
+  .for-item-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* SUBSIDY INFO */
+  .subsidy-info { background: #faf7f4; }
+  .subsidy-content {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; align-items: start;
+  }
+  .subsidy-left h3 { font-size: 22px; font-weight: 700; margin-bottom: 16px; color: #d45a2a; }
+  .subsidy-left > p { color: #666; margin-bottom: 16px; font-size: 15px; }
+  .subsidy-amounts { list-style: none; }
+  .subsidy-amounts li {
+    padding: 13px 0; border-bottom: 1px solid #f0e8e0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .subsidy-amounts li:last-child { border-bottom: none; }
+  .subsidy-amounts li .label { font-weight: 500; font-size: 14px; }
+  .subsidy-amounts li .amount { font-weight: 700; color: #d45a2a; font-size: 15px; }
+  .subsidy-right {
+    background: linear-gradient(135deg, #fef5ee, #fff8f2);
+    border: 1px solid #f0d4c0; border-radius: 20px; padding: 28px;
+  }
+  .subsidy-right h4 { font-size: 17px; font-weight: 700; color: #d45a2a; margin-bottom: 14px; }
+  .subsidy-right ol { padding-left: 20px; color: #555; }
+  .subsidy-right ol li { margin-bottom: 10px; font-size: 14px; }
+  .subsidy-cta { margin-top: 24px; }
+  .subsidy-cta a {
+    display: inline-block; background: #e8734a;
+    color: white; padding: 12px 28px; border-radius: 25px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+
+  /* CTA / CONTACT */
+  .cta-section {
+    background: linear-gradient(135deg, #e8734a, #f0a848);
+    color: white; padding: 88px 24px;
+  }
+  .cta-inner {
+    max-width: 1240px; margin: 0 auto;
+    display: grid; grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px; align-items: start;
+  }
+  .cta-copy { text-align: left; }
+  .cta-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 16px; line-height: 1.2; }
+  .cta-section > .cta-inner > .cta-copy p { font-size: 17px; opacity: 0.92; margin-bottom: 28px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 28px; }
+  .cta-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 32px; border-radius: 30px;
+    font-size: 16px; font-weight: 700; text-decoration: none;
+    transition: transform 0.2s; min-height: 44px;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn-white { background: white; color: #e8734a; }
+  .contact-meta {
+    display: grid; gap: 8px; margin-top: 4px;
+    font-size: 14px; opacity: 0.9;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.26);
+    border-radius: 24px; padding: 28px;
+    backdrop-filter: blur(8px);
+  }
+  .contact-form { max-width: 100%; margin: 0; text-align: left; }
+  .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+  .form-row > * { flex: 1; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%; padding: 14px 16px; border: none;
+    border-radius: 12px; font-size: 15px;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: rgba(255,255,255,0.96); color: #2d2d2d;
+    min-height: 44px;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: #aaa; }
+  .contact-form select { color: #aaa; }
+  .contact-form select:valid { color: #2d2d2d; }
+  .contact-form textarea { resize: vertical; margin-bottom: 14px; min-height: 120px; }
+  .form-submit {
+    width: 100%; min-height: 48px;
+    background: white; color: #e8734a;
+    border: none; border-radius: 12px;
+    font-size: 16px; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: transform 0.2s; display: flex;
+    align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit:hover { transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #2d2d2d; color: #aaa;
+    text-align: center; padding: 32px 24px; font-size: 13px;
+  }
+  footer a { color: #f0a848; text-decoration: none; }
+
+  /* MOBILE */
   @media (max-width: 768px) {
+    .hero { padding: 112px 20px 60px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+    .hero-copy { text-align: center; }
+    .hero img.logo { margin: 0 auto 20px; }
+    .hero h1 { font-size: 30px; }
+    .hero p.sub { font-size: 15px; max-width: 100%; }
+    .hero-badges { justify-content: center; }
+    .hero-cta { width: 100%; justify-content: center; }
+    .hero-panel { padding: 20px; }
+    nav .links { display: none; }
+    .section-title { font-size: 28px; }
+    .section-sub { font-size: 14px; margin-bottom: 36px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .case-section { padding: 20px; }
+    .case-section h3 { font-size: 17px; text-align: center; }
+    .case-grid { grid-template-columns: 1fr; }
+    .case-grid img { aspect-ratio: 4/3; }
     .calc-wrapper { grid-template-columns: 1fr; }
     .checker-wrapper { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .for-who-grid { grid-template-columns: 1fr; }
+    .subsidy-content { grid-template-columns: 1fr; }
+    .cta-inner { grid-template-columns: 1fr; gap: 28px; }
+    .cta-copy { text-align: center; }
+    .cta-section h2 { font-size: 28px; }
+    .cta-buttons { justify-content: center; }
+    .form-row { flex-direction: column; }
+  }
+
+  @media (min-width: 769px) {
+    .hero-panel { transform: translateY(10px); }
   }
 </style>
 </head>
@@ -250,9 +529,10 @@
   <div class="inner">
     <div class="logo-text">SNAP 設計</div>
     <div class="links">
+      <a href="#comparison">我們的不同</a>
       <a href="#portfolio">作品集</a>
-      <a href="#edges">為什麼選我們</a>
-      <a href="#subsidy">政府補助</a>
+      <a href="#process">服務流程</a>
+      <a href="#subsidy-info">補助資訊</a>
       <a href="#contact" class="nav-cta">免費諮詢</a>
     </div>
   </div>
@@ -263,12 +543,12 @@
   <div class="hero-inner">
     <div class="hero-copy">
       <img src="img/logo.png" alt="SNAP 設計" class="logo">
-      <h1>老宅翻新<br><span>最少預算，最高投報率</span></h1>
-      <p class="sub">我們專門為房東與自住客找出最值得花錢的地方。不是亂花錢做大改，而是用最精準的翻新，換來更快出租、更高租金、更少維修麻煩。</p>
+      <h1>你的房子，你自己管。<br><span class="grad-text">我們只負責讓它變得更值錢。</span></h1>
+      <p class="sub">SNAP 設計專做一件事：用最少預算，翻新出最高租金回報。設計、施工、到完工驗收，全程管理。你不用找工班、不用盯工地、不用懂裝修。</p>
       <div class="hero-badges">
         <div class="badge">⚡ 最快 10 個工作天</div>
         <div class="badge">💰 從 NT$30 萬起</div>
-        <div class="badge">🏛️ 政府補助代辦</div>
+        <div class="badge">🏛️ 補助與貸款評估</div>
       </div>
       <a href="#contact" class="hero-cta">預約免費諮詢 →</a>
     </div>
@@ -279,15 +559,15 @@
         <div class="hero-points">
           <div class="hero-point">
             <strong>更快出租</strong>
-            <span>翻新後更容易自己在 591 租掉，降低空置期。</span>
+            <span>翻新後更容易自己在 591 租掉，降低空置期</span>
           </div>
           <div class="hero-point">
             <strong>更高租金</strong>
-            <span>把預算集中在最有感的空間，拉高房客願意付的價格。</span>
+            <span>把預算集中在最有感的空間，拉高房客願意付的價格</span>
           </div>
           <div class="hero-point">
             <strong>更少麻煩</strong>
-            <span>管線、防水、老舊設備一次整理，減少後續維修問題。</span>
+            <span>管線、防水、老舊設備一次整理，減少後續維修問題</span>
           </div>
         </div>
         <div class="hero-note">免費現場諮詢 → 丈量 NT$______ → 設計 NT$______ → 確定施工後丈量費可折抵工程款</div>
@@ -296,26 +576,55 @@
   </div>
 </div>
 
-<!-- EDGES -->
-<section class="edges" id="edges">
+<!-- COMPARISON -->
+<section class="comparison" id="comparison">
   <div class="section-inner">
-    <div class="section-title">為什麼選 <span>SNAP 設計</span>？</div>
-    <div class="section-sub">我們不一樣的三件事</div>
-    <div class="edge-grid">
-      <div class="edge-card">
-        <div class="edge-icon">⚡</div>
-        <h3>最快 10 個工作天</h3>
-        <p>出租物件拖越久，空置損失越大。我們專注在高回報改造，最快 <strong>10 個工作天</strong>完工，通常建議一個月內完成。</p>
+    <div class="section-title">我們跟 <span class="grad-text">包租代管</span> 不一樣</div>
+    <div class="section-sub">你不需要放棄控制權，也能讓房子變得更值錢</div>
+    <div class="comparison-grid">
+      <div class="comp-card comp-card-muted">
+        <div class="comp-card-label">包租代管公司</div>
+        <div class="comp-item"><span class="comp-icon">🏠</span><span>拿走你的房子，幫你管</span></div>
+        <div class="comp-item"><span class="comp-icon">✂️</span><span>你放棄管理權 + 租金被抽成</span></div>
+        <div class="comp-item"><span class="comp-icon">🔗</span><span>長期合約綁定</span></div>
+        <div class="comp-item"><span class="comp-icon">👤</span><span>他們選租客</span></div>
+        <div class="comp-item"><span class="comp-icon">💤</span><span>適合完全不想管的人</span></div>
       </div>
-      <div class="edge-card">
-        <div class="edge-icon">💰</div>
+      <div class="comp-card comp-card-highlight">
+        <div class="comp-card-label">SNAP 設計</div>
+        <div class="comp-item"><span class="comp-icon">🔑</span><span>房子還是你的，我們只做翻新</span></div>
+        <div class="comp-item"><span class="comp-icon">💯</span><span>你保留 100% 控制權 + 100% 租金</span></div>
+        <div class="comp-item"><span class="comp-icon">✅</span><span>工程完就結束，沒有後續綁約</span></div>
+        <div class="comp-item"><span class="comp-icon">🙋</span><span>你選自己的租客</span></div>
+        <div class="comp-item"><span class="comp-icon">💪</span><span>適合想省錢、自己掌控的房東</span></div>
+      </div>
+    </div>
+    <div class="comparison-quote">
+      「包租代管幫你管房子，但你也放棄了控制權和一部分租金收入。SNAP 設計幫你把房子變好，然後還給你。」
+    </div>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="section-inner">
+    <div class="section-title">為什麼選 <span class="grad-text">SNAP 設計</span>？</div>
+    <div class="section-sub" style="margin-bottom: 40px;"></div>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">⚡</div>
         <h3>最少預算，最高投報率</h3>
-        <p>不是每個空間都要大改。我們會找出最值得花錢的地方，讓您用 <strong>最少的投資</strong>換到更高租金、更快出租。</p>
+        <p>不是每間房子都需要全屋翻新。我們會告訴你：錢花在哪裡最有效。可能只需要改廚房和浴室，租金就能多 NT$5,000–8,000／月。</p>
       </div>
-      <div class="edge-card">
-        <div class="edge-icon">🏛️</div>
-        <h3>政府補助與貸款評估</h3>
-        <p>我們會幫您檢查是否符合 <strong>五月老宅補助</strong>或 <strong>八月修繕貸款利息補貼</strong>，該申請就申請，不浪費任何可用資源。</p>
+      <div class="pillar-card">
+        <div class="pillar-icon">📋</div>
+        <h3>設計 + 施工 + 管理，一條龍</h3>
+        <p>從丈量、設計、發包、施工到驗收，你不用自己找工班、不用盯進度。一個窗口，全程搞定。最快 10 個工作天。</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🏛️</div>
+        <h3>補助與貸款，我們幫你查</h3>
+        <p>屋齡 30 年以上？五月老宅延壽補助最高 NT$30 萬、政府出 65%。八月修繕貸款最高 NT$80 萬。符合條件我們幫你申請。</p>
       </div>
     </div>
   </div>
@@ -324,9 +633,9 @@
 <!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <div class="section-inner">
-    <div class="section-title">真實 <span>改造案例</span></div>
+    <div class="section-title">真實 <span class="grad-text">改造案例</span></div>
     <div class="section-sub">每一張都是我們的實際作品</div>
-    
+
     <div class="case-section">
       <h3>🏠 案例一 — 空屋 → 溫馨現代宅</h3>
       <div class="case-grid">
@@ -349,84 +658,8 @@
 
     <div class="case-section">
       <h3>🏠 案例三 — 辦公雜物間 → 時尚休憩空間</h3>
-      <div class="case-grid" style="grid-template-columns: 1fr; max-width: 550px;">
+      <div class="case-grid" style="grid-template-columns: 1fr; max-width: 540px;">
         <img src="img/case3-lounge.jpg" alt="休憩空間改造" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUBSIDY -->
-<section class="subsidy" id="subsidy">
-  <div class="section-inner">
-    <div class="section-title">政府幫您出錢 — <span>老宅延壽補助</span></div>
-    <div class="section-sub">屋齡 30 年以上即可申請，截止 2027/12/31</div>
-    
-    <div class="subsidy-content">
-      <div class="subsidy-left">
-        <h3>💰 補助金額一覽</h3>
-        <p>政府最高負擔工程費用的 <strong>65%</strong>，以下為各項上限：</p>
-        <ul class="subsidy-amounts">
-          <li><span class="label">🏢 公寓公共空間（整棟）</span><span class="amount">最高 NT$960 萬</span></li>
-          <li><span class="label">🏠 透天室外修繕（整棟）</span><span class="amount">最高 ~NT$330 萬</span></li>
-          <li><span class="label">🛋️ 室內空間 — 一般戶</span><span class="amount">每戶 NT$20 萬</span></li>
-          <li><span class="label">🛋️ 室內空間 — 高齡弱勢戶</span><span class="amount">每戶 NT$30 萬</span></li>
-        </ul>
-        <p style="font-size:13px; color:#999; margin-top:12px;">高齡弱勢戶：65歲以上長者、低收入/中低收入戶、長照2級以上</p>
-        <div class="subsidy-cta">
-          <a href="subsidy-guide.pdf" target="_blank">📄 下載完整補助指南 PDF</a>
-        </div>
-      </div>
-      <div class="subsidy-right">
-        <h4>📋 申請資格</h4>
-        <p style="font-size:14px; color:#555; margin-bottom:12px;"><strong>公寓（4-6樓）：</strong></p>
-        <ol>
-          <li>屋齡 30 年以上合法建築</li>
-          <li>住宅使用比例達 50% 以上</li>
-          <li>戶籍內至少 1 名 65+ 長者、低收入戶、或長照 2 級以上</li>
-          <li>取得 50% 以上所有權人同意</li>
-        </ol>
-        <p style="font-size:14px; color:#555; margin: 12px 0;"><strong>透天（≤6樓）：</strong></p>
-        <ol>
-          <li>屋齡 30 年以上，全棟住宅使用</li>
-          <li>全體所有權人同意</li>
-        </ol>
-        <p style="font-size:13px; color:#999; margin-top:14px;">諮詢專線：02-7701-9919<br>官方網站：<a href="https://twur.nlma.gov.tw/" target="_blank" style="color:#e8734a;">twur.nlma.gov.tw</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="section-inner">
-    <div class="section-title">合作 <span>流程</span></div>
-    <div class="section-sub">從拍照到入住，全程陪伴</div>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">1</div>
-        <h4>免費諮詢</h4>
-        <p>先了解您的目標、預算、出租狀況與時程。</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">2</div>
-        <h4>現場丈量</h4>
-        <p>確認尺寸、屋況與最值得投資的重點空間。</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">3</div>
-        <h4>設計提案</h4>
-        <p>依照您的預算，提出最有投報率的翻新方案。</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">4</div>
-        <h4>補助 / 貸款評估</h4>
-        <p>能申請的就協助準備，降低您的實際支出。</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">5</div>
-        <h4>施工完工</h4>
-        <p>最快 10 個工作天，盡快恢復出租或入住。</p>
       </div>
     </div>
   </div>
@@ -435,8 +668,8 @@
 <!-- ROI CALCULATOR -->
 <section class="roi-calc" id="roi-calculator">
   <div class="section-inner">
-    <div class="section-title">投資報酬率 <span>計算器</span></div>
-    <div class="section-sub">輸入您的房屋資訊，立即估算翻新後的投報率與回本時間</div>
+    <div class="section-title">投資報酬率 <span class="grad-text">計算器</span></div>
+    <div class="section-sub">輸入你的房屋資訊，立即估算翻新後的投報率與回本時間</div>
     <div class="calc-wrapper">
       <div class="calc-inputs">
         <div class="calc-field">
@@ -487,7 +720,7 @@
           <div class="subsidy-alert" id="subsidy-alert" style="display:none;">
             <span class="alert-icon">🏛️</span>
             <div>
-              <strong>您可能符合政府補助，最高可補助 65%！</strong>
+              <strong>你可能符合政府補助，最高可補助 65%！</strong>
               <div id="subsidy-payback-text"></div>
             </div>
           </div>
@@ -501,16 +734,16 @@
 <!-- SUBSIDY CHECKER -->
 <section class="subsidy-checker" id="subsidy-checker">
   <div class="section-inner">
-    <div class="section-title">補助資格 <span>快速檢查</span></div>
-    <div class="section-sub">回答四個問題，立即了解您是否符合政府補助資格</div>
+    <div class="section-title">補助資格 <span class="grad-text">快速檢查</span></div>
+    <div class="section-sub">回答四個問題，立即了解你是否符合政府補助資格</div>
     <div class="checker-wrapper">
       <div class="checker-questions">
         <div class="checker-field">
-          <label>Q1　您的房屋屋齡？</label>
+          <label>Q1　你的房屋屋齡？</label>
           <select id="q-age">
             <option value="" disabled selected>請選擇</option>
             <option value="under20">20 年以下</option>
-            <option value="20to30">20-30 年</option>
+            <option value="20to30">20–30 年</option>
             <option value="over30">30 年以上</option>
             <option value="unsure">不確定</option>
           </select>
@@ -519,7 +752,7 @@
           <label>Q2　房屋類型？</label>
           <select id="q-type">
             <option value="" disabled selected>請選擇</option>
-            <option value="apartment">公寓 4-6 樓</option>
+            <option value="apartment">公寓 4–6 樓</option>
             <option value="townhouse">透天</option>
             <option value="building">大樓</option>
             <option value="other">其他</option>
@@ -545,20 +778,121 @@
         <button class="calc-btn" onclick="checkSubsidy()">檢查資格 →</button>
       </div>
       <div class="checker-result" id="checker-result">
-        <div id="checker-result-inner"></div>
+        <div id="checker-result-inner"><span style="color:#bbb; font-size:15px;">回答問題後，結果會顯示在這裡</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-title">合作 <span class="grad-text">流程</span></div>
+    <div class="section-sub" style="margin-bottom: 40px;"></div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>免費諮詢</h4>
+        <p>聊需求和預算，告訴你值不值得做</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>現場丈量</h4>
+        <p>到府拍照、量尺寸、評估屋況</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>設計提案</h4>
+        <p>針對你的預算，給出最有投報率的方案</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>施工管理</h4>
+        <p>我們發包 + 盯工，你不用管。最快 10 工作天</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h4>驗收交屋</h4>
+        <p>你檢查滿意才算完成</p>
+      </div>
+    </div>
+    <p class="process-note">＊丈量費在確認施工後可折抵工程款</p>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section class="for-who" id="for-who">
+  <div class="section-inner">
+    <div class="section-title">適合 <span class="grad-text">誰</span>？</div>
+    <div class="section-sub" style="margin-bottom: 40px;"></div>
+    <div class="for-who-grid">
+      <div class="for-card for-card-yes">
+        <div class="for-card-title"><span>✅</span> 適合</div>
+        <div class="for-item"><span class="for-item-icon">🏘️</span><span>房東：房子老舊租不好，想翻新提高租金，但不想被包租代管綁住</span></div>
+        <div class="for-item"><span class="for-item-icon">🏘️</span><span>房東：手上有 2–3 間老公寓，想用最少的錢讓每間都能順利出租</span></div>
+        <div class="for-item"><span class="for-item-icon">🏡</span><span>自住客：老房子住不舒服，想翻新但預算有限</span></div>
+        <div class="for-item"><span class="for-item-icon">💼</span><span>投資客：剛買老屋，想最快翻新出租開始收租</span></div>
+      </div>
+      <div class="for-card for-card-no">
+        <div class="for-card-title"><span>❌</span> 不適合</div>
+        <div class="for-item"><span class="for-item-icon">💤</span><span>完全不想碰房子的人 → 建議找包租代管</span></div>
+        <div class="for-item"><span class="for-item-icon">💎</span><span>想要頂級豪宅裝修 → 我們做的是高投報率，不是奢華</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBSIDY INFO -->
+<section class="subsidy-info" id="subsidy-info">
+  <div class="section-inner">
+    <div class="section-title">政府幫你出錢 — <span class="grad-text">老宅延壽補助</span></div>
+    <div class="section-sub">屋齡 30 年以上即可申請，截止 2027/12/31</div>
+    <div class="subsidy-content">
+      <div class="subsidy-left">
+        <h3>💰 補助金額一覽</h3>
+        <p>政府最高負擔工程費用的 <strong>65%</strong>，以下為各項上限：</p>
+        <ul class="subsidy-amounts">
+          <li><span class="label">🏢 公寓公共空間（整棟）</span><span class="amount">最高 NT$960 萬</span></li>
+          <li><span class="label">🏠 透天室外修繕（整棟）</span><span class="amount">最高 ≈NT$330 萬</span></li>
+          <li><span class="label">🛋️ 室內空間 — 一般戶</span><span class="amount">每戶 NT$20 萬</span></li>
+          <li><span class="label">🛋️ 室內空間 — 高齡弱勢戶</span><span class="amount">每戶 NT$30 萬</span></li>
+        </ul>
+        <p style="font-size:13px; color:#999; margin-top:12px;">高齡弱勢戶：65 歲以上長者、低收入／中低收入戶、長照 2 級以上</p>
+        <div class="subsidy-cta">
+          <a href="subsidy-guide.pdf" target="_blank">📄 下載完整補助指南 PDF</a>
+        </div>
+      </div>
+      <div class="subsidy-right">
+        <h4>📋 申請資格</h4>
+        <p style="font-size:14px; color:#555; margin-bottom:12px;"><strong>公寓（4–6 樓）：</strong></p>
+        <ol>
+          <li>屋齡 30 年以上合法建築</li>
+          <li>住宅使用比例達 50% 以上</li>
+          <li>戶籍內至少 1 名 65+ 長者、低收入戶、或長照 2 級以上</li>
+          <li>取得 50% 以上所有權人同意</li>
+        </ol>
+        <p style="font-size:14px; color:#555; margin: 14px 0 10px;"><strong>透天（≤6 樓）：</strong></p>
+        <ol>
+          <li>屋齡 30 年以上，全棟住宅使用</li>
+          <li>全體所有權人同意</li>
+        </ol>
+        <p style="font-size:13px; color:#999; margin-top:16px;">
+          諮詢專線：02-7701-9919<br>
+          官方網站：<a href="https://twur.nlma.gov.tw/" target="_blank" style="color:#e8734a;">twur.nlma.gov.tw</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
     <div class="cta-copy">
       <h2>準備好讓房子更快租出去？</h2>
-      <p>先免費聊聊。我們會直接告訴您：這間房子該不該翻、要翻哪裡、預算怎麼花最有效，還有能不能申請補助或貸款。</p>
+      <p>先免費聊聊。我們會直接告訴你：這間房子該不該翻、要翻哪裡、預算怎麼花最有效，還有能不能申請補助或貸款。</p>
       <div class="cta-buttons">
-        <a href="subsidy-guide.pdf" class="cta-btn cta-btn-outline" target="_blank">📄 下載補助指南</a>
+        <a href="subsidy-guide.pdf" class="cta-btn" style="background:rgba(255,255,255,0.2); color:white; border:2px solid rgba(255,255,255,0.6);" target="_blank">📄 下載補助指南</a>
       </div>
       <div class="contact-meta">
         <div>✓ 免費現場諮詢</div>
@@ -569,12 +903,12 @@
     <div class="contact-card">
       <form action="https://formspree.io/f/roger@secondhome.casa" method="POST" class="contact-form">
         <div class="form-row">
-          <input type="text" name="name" placeholder="您的姓名" required>
+          <input type="text" name="name" placeholder="你的姓名" required>
           <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="form-row">
           <input type="tel" name="phone" placeholder="電話 / LINE ID（選填）">
-          <select name="building_age">
+          <select name="building_age" required>
             <option value="" disabled selected>房屋屋齡</option>
             <option value="under-20">20 年以下</option>
             <option value="20-30">20～30 年</option>
@@ -582,8 +916,8 @@
             <option value="unsure">不確定</option>
           </select>
         </div>
-        <textarea name="message" placeholder="請簡述您的需求（坪數、預算、想改造的空間、目前出租狀況等）" rows="5" required></textarea>
-        <button type="submit" class="cta-btn cta-btn-white" style="border:none; cursor:pointer; font-size:16px; width:100%; text-align:center;">📩 預約免費諮詢</button>
+        <textarea name="message" placeholder="請簡述你的需求（坪數、預算、想改造的空間、目前出租狀況等）" rows="5" required></textarea>
+        <button type="submit" class="form-submit">📩 預約免費諮詢</button>
       </form>
     </div>
   </div>
@@ -592,7 +926,9 @@
 <!-- FOOTER -->
 <footer>
   <p>© 2026 SNAP 設計 ｜ snapdesign.tw</p>
-  <p style="margin-top:6px;">補助資料來源：<a href="https://twur.nlma.gov.tw/" target="_blank">內政部國土管理署</a>，實際條件以政府公告為準。</p>
+  <p style="margin-top:6px;">
+    補助資料來源：<a href="https://twur.nlma.gov.tw/" target="_blank">內政部國土管理署</a>，實際條件以政府公告為準。
+  </p>
 </footer>
 
 <!-- Lightbox -->
@@ -672,20 +1008,20 @@
 
     if (isOver30 && isEligibleType && hasEligiblePerson) {
       emoji = '✅';
-      title = '您很可能符合老宅延壽補助！';
-      desc = '每戶最高 NT$30 萬，政府負擔 65%。我們可以協助您準備申請文件，讓翻新成本大幅降低。';
+      title = '你很可能符合老宅延壽補助！';
+      desc = '每戶最高 NT$30 萬，政府負擔 65%。我們可以協助你準備申請文件，讓翻新成本大幅降低。';
     } else if (isOver30 && (!isEligibleType || !hasEligiblePerson)) {
       emoji = '🔍';
-      title = '您的房屋屋齡符合，但需要進一步確認其他條件。';
-      desc = '建議預約免費諮詢，我們會協助您確認是否符合其他補助管道，並為您規劃最有效的翻新方案。';
+      title = '你的房屋屋齡符合，但需要進一步確認其他條件。';
+      desc = '建議預約免費諮詢，我們會協助你確認是否符合其他補助管道，並為你規劃最有效的翻新方案。';
     } else if (age === '20to30') {
       emoji = '📋';
-      title = '您可能符合修繕住宅貸款利息補貼';
+      title = '你可能符合修繕住宅貸款利息補貼';
       desc = '每年 8 月申請，最高 NT$80 萬貸款，利息由政府補貼。翻新後提升租金收益，還款輕鬆。';
     } else {
       emoji = 'ℹ️';
       title = '目前政府補助主要針對屋齡 30 年以上房屋。';
-      desc = '我們仍可為您規劃最有投報率的翻新方案，用最少預算換來更高租金與更低空置率。';
+      desc = '我們仍可為你規劃最有投報率的翻新方案，用最少預算換來更高租金與更低空置率。';
     }
 
     const inner = document.getElementById('checker-result-inner');
